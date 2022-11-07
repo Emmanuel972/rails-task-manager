@@ -1,0 +1,27 @@
+<div class="text-center">
+  <h1><%= @task.title %></h1>
+</div>
+<div class="d-flex justify-content-end">
+  <%= link_to "Checklist", tasks_path, class: "m-3 btn btn-success" %>
+</div>
+<div class="d-flex justify-content-center">
+  <div class="m-3 p-3 card text-center bg-success p-2 text-dark bg-opacity-10" style="width: 20rem;">
+    <p> <%= @task.details %> </p>
+  </div>
+</div>
+<div class="d-flex justify-content-center">
+<%= check_box("task", @task.id, {checked: @task.completed}) %>
+<%= "this task is #{@task.completed? ? 'completed' : 'not completed yet'}" %>
+</div>
+<div class="d-flex justify-content-center">
+  <div>
+    <%= link_to "Edit", edit_task_path, class: "m-3 btn btn-primary" %>
+  </div>
+  <div>
+    <%= link_to "Delete",
+    task_path(@task),
+    class: "m-3 btn btn-danger",
+    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+    %>
+  </div>
+</div>

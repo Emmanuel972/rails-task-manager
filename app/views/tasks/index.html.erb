@@ -1,0 +1,13 @@
+<div class="text-center text-primary">
+  <h1><i class="fa-solid fa-list-check"></i> My Tasks</h1>
+</div>
+<div class="d-flex justify-content-center">
+  <ul class="p-3 m-3 list-unstyled border border-5 rounded">
+    <% @tasks.each do |task| %>
+      <li><%= check_box("task", task.id, {checked: task.completed}) %> <%= link_to task.title, task_path(task) %> </li>
+    <% end %>
+  </ul>
+</div>
+<div class="d-flex justify-content-center rouded">
+  <%= link_to "Create task", tasks_new_path %>
+</div>
